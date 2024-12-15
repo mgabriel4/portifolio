@@ -1,0 +1,102 @@
+body {
+    font-family: Fira Sans;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    color: black;
+}
+
+/* Paleta:
+    #FEA38E
+    #FFDFC3
+    #FBA2AB
+    #F6E6D0
+*/
+.fira-sans-semibold {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 600;
+    font-size: 5rem;
+    font-style: normal;
+}
+
+/* Header */
+header {
+    color: #0d0d0d;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.introducao{
+    padding: 60px;
+}
+
+.titulo-introducao{
+    font-weight: 900;
+    font-size: 100px;   
+}
+
+.p-introducao{
+    font-size: 1.2rem;
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .titulo-introducao{
+        font-size: 8vw;
+    }
+
+    .p-introducao{
+        font-size: 1rem;
+    }
+}
+
+
+/* Seção Projetos */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Timeline Formação */
+.timeline {
+    list-style: none;
+    padding: 0;
+    position: relative;
+}
+.timeline li {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    border-left: 4px solid #FEA38E;
+    position: relative;
+}
+.timeline li:before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    background: #FEA38E;
+    border-radius: 50%;
+}
+
+/* Footer */
+footer {
+    background-color: #003366;
+    color: #fff;
+    text-align: center;
+}
+
+/* Transições gerais */
+section h2 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+section.in-view h2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
