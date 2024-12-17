@@ -21,12 +21,12 @@ body {
 /* Header */
 header {
     color: #0d0d0d;
-    padding: 100px 0;
+    padding: 0px;
     text-align: center;
 }
 
 .introducao{
-    padding: 60px;
+    padding: 130px;
 }
 
 .titulo-introducao{
@@ -49,7 +49,6 @@ header {
     }
 }
 
-
 /* Seção Projetos */
 .card {
     transition: transform 0.3s, box-shadow 0.3s;
@@ -59,7 +58,6 @@ header {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Timeline Formação */
 .timeline {
     list-style: none;
     padding: 0;
@@ -82,10 +80,15 @@ header {
     border-radius: 50%;
 }
 
+.texto-skills{
+    text-align: center;
+    font-size: small;
+    font-style: italic;
+}
+
 /* Footer */
 footer {
-    background-color: #003366;
-    color: #fff;
+    color: black;
     text-align: center;
 }
 
@@ -100,3 +103,38 @@ section.in-view h2 {
     transform: translateY(0);
 }
 
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com 80% de opacidade */
+    backdrop-filter: blur(10px); /* Adiciona o efeito "blur" ao fundo */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Linha sutil no rodapé da Navbar */
+}
+  
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+  
+.menu {
+    display: flex;
+    list-style: none;
+}
+  
+.menu li {
+    margin: 0 10px;
+}
+  
+.menu li a {
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+  
+.menu li a:hover {
+    color: #FBA2AB;
+}
