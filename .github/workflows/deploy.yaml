@@ -1,0 +1,38 @@
+name: publicacao
+on:
+  push
+  
+# Environment
+env:
+  PYTHON_VERSION: 3.13
+
+# Allow the job to push the regenerated CV PDF back to main
+permissions:
+  contents: write
+
+# Jobs to run
+jobs:
+
+  # Build and deploy documentation site
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+
+      # Checkout source form GitHub (full history for git-revision-date-localized)
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Install Python runtime and dependencies
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      # pip
+      - run: |
+          pip install -r requirements.txt
+
+      # Deploy to GitHub Pages
+      - run: |
+          mkdocs gh-deploy --force
