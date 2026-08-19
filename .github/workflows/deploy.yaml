@@ -1,38 +1,42 @@
-name: publicacao
+name: Publicar portfólio no GitHub Pages
+
 on:
-  push
-  
-# Environment
-env:
-  PYTHON_VERSION: 3.13
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
-# Allow the job to push the regenerated CV PDF back to main
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
-# Jobs to run
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
-
-  # Build and deploy documentation site
   deploy:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    name: Publicar site
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
 
-      # Checkout source form GitHub (full history for git-revision-date-localized)
-      - uses: actions/checkout@v4
+      - name: Configurar o GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Preparar os arquivos do site
+        uses: actions/upload-pages-artifact@v3
         with:
-          fetch-depth: 0
+          path: .
 
-      # Install Python runtime and dependencies
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-
-      # pip
-      - run: |
-          pip install -r requirements.txt
-
-      # Deploy to GitHub Pages
-      - run: |
-          mkdocs gh-deploy --force
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
